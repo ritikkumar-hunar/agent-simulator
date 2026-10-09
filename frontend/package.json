@@ -6,10 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "server": "node voice-agent-server.js"
   },
   "dependencies": {
+    "@deepgram/sdk": "^5.14.0",
+    "@fastify/websocket": "^11.3.3",
+    "@google/generative-ai": "^0.24.1",
     "clsx": "^2.1.1",
+    "dotenv": "^18.0.6",
+    "fastify": "^5.12.5",
     "framer-motion": "^14.0.0",
     "lucide-react": "^1.53.0",
     "next": "16.4.0",

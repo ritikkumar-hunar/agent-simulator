@@ -14,17 +14,25 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log(`[Simulator] Saving new scenario for Inbound Webhook...`);
+    console.log(`[Simulator] Pushing new scenario to Python Backend...`);
 
-    // Save the prompt to a local file so the webhook can read it when Sarvam calls
-    const filePath = path.join(process.cwd(), 'current_scenario.json');
-    fs.writeFileSync(filePath, JSON.stringify({
-      scenarioPrompt,
-      expectedBehaviors,
-      timestamp: new Date().toISOString()
-    }, null, 2));
+    const backendUrl = process.env.BACKEND_URL || 'http://127.0.0.1:8080';
+    
+    // Forward the prompt to the backend
+    try {
+      const response = await fetch(`${backendUrl}/update-scenario`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scenarioPrompt }),
+      });
+      if (!response.ok) {
+        throw new Error('Backend returned error');
+      }
+    } catch (err) {
+      console.warn('[Warning] Could not reach Python backend. Ensure it is running on 8080.', err);
+    }
 
-    console.log(`[Simulator] Scenario saved successfully.`);
+    console.log(`[Simulator] Scenario updated on backend.`);
 
     // Return the behaviors so the UI can list them for the human evaluator to check while the call happens.
     const mockBehaviors = expectedBehaviors 
