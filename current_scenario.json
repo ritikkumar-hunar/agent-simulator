@@ -1,5 +1,5 @@
 {
-  "scenarioPrompt": "You are Rahul, a 24-year-old looking for a job. A recruiter named Neha is calling you. You are very interested in the Store Sales Associate role. When she asks, tell her you have 2 years of experience working at a clothing store, you are a 12th pass, your current take-home salary is 18,000 rupees, and your last company was \"Zudio\". Agree to visit the Andheri West store for an interview tomorrow at 11 AM. Keep your answers brief and in Hindi/Hinglish.",
+  "scenarioPrompt": "You are Rahul, a 24-year-old looking for a job. but on this call you need to tell that you are busy and request to call back tomorrow at 10am",
   "expectedBehaviors": "1. Agent should remain calm",
-  "timestamp": "2026-10-08T11:23:50.451Z"
+  "timestamp": "2026-10-09T12:16:09.040Z"
 }
